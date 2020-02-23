@@ -1,0 +1,3 @@
+https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad
+
+https://cloudbeavervault007.vault.azure.net/keys/mykey/05d95c63682c4611a7020f3bcabe6768
