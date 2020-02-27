@@ -1,0 +1,15 @@
+https://hub.docker.com/editions/community/docker-ce-desktop-windows
+
+https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
+
+docker login kishoreacrdemo.azurecr.io
+
+docker pull hello-world
+
+docker tag hello-world kishoreacrdemo.azurecr.io/hello-world:v1
+
+docker push kishoreacrdemo.azurecr.io/hello-world:v1
+
+docker rmi kishoreacrdemo.azurecr.io/hello-world:v1
+
+docker run kishoreacrdemo.azurecr.io/hello-world:v1

@@ -1,0 +1,52 @@
+﻿# Create resource group
+az group create --name mygroup --location eastus
+
+# Create AKS cluster
+az aks create --resource-group mygroup --name mycluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
+
+# Install kubectl command line client locally
+az aks install-cli
+
+# Get credentials
+az aks get-credentials --resource-group mygroup --name mycluster
+
+# Get a list of cluster nodes
+kubectl get nodes
+
+
+ #Creating and opening an YAML file
+Code example.yaml
+
+############  Copy and Past below given yaml code and Save it ###########
+
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+    replicas: 2 # tells deployment to run 2 pods matching the template
+    template:
+      metadata:
+        labels:
+          app: nginx
+      spec:
+        containers:
+        - name: nginx
+          image: nginx:1.7.9
+          ports:
+          - containerPort: 80
+
+##################################################################################
+
+# Run the application
+kubectl apply -f example.yaml
+
+# Monitor progress of the deployment
+kubectl get service nginx-deployment -watch
+
+# View pods related to this deployment
+kubectl get pods -l app=nginx
+
